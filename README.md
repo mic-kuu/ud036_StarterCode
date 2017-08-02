@@ -21,7 +21,9 @@ In order to generate a different content, simply modify created movies objects a
 The project was designed and tested using **Python 2.7.3** and it will work best in that enviroment. There is no guarante that it will work on different Python releases.
 
 ## Contributions
-Special thanks to [wesbos](https://github.com/wesbos) for the inspiration for the layout of the site - [repository](https://github.com/wesbos/JavaScript30/tree/master/05%20-%20Flex%20Panel%20Gallery)
+Special thanks to:
+* [wesbos](https://github.com/wesbos) for the inspiration for the layout of the site ([repository](https://github.com/wesbos/JavaScript30/tree/master/05%20-%20Flex%20Panel%20Gallery))
+* [csstricks](https://css-tricks.com) for information on how create a responsive embeded youtube video ([link](https://css-tricks.com/NetMag/FluidWidthVideo/Article-FluidWidthVideo.php))
 
 ## License
 ![Creative Commons License](https://i.creativecommons.org/l/by/4.0/88x31.png) 
