@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>mic-kuu's favourite movies</title>
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+</head>
+<body>
+
+    
+  <style>
+    html {
+      box-sizing: border-box;
+      font-family: 'Josefin Sans', sans-serif;
+    }
+    body {
+      margin: 0;
+    }
+    .panels {
+      min-height:100vh;
+      overflow: hidden;
+      display: flex;
+    }
+    .panel {
+      color: white;
+      text-align: center;
+      align-items: center;
+      transition:
+        font-size 1.5s cubic-bezier(0.6,-0.15, 0.8,-0.2),
+        flex 1.5s cubic-bezier(0.6,-0.15, 0.8,-0.2);
+      background-size:cover;
+      background-position:center;
+      flex: 1;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+     .panel0 {background-image:url(http://i.imgur.com/KykTdlk.jpg); }  .panel1 {background-image:url(http://i.imgur.com/wyboozD.jpg); }  .panel2 {background-image:url(http://i.imgur.com/5AgF0Zi.jpg); } 
+
+    /* Apply to all children elements of class panel */
+    .panel > * {
+      margin:0;
+      width: 100%;
+      transition:transform 0.5s;
+      flex: 1 0 auto;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2em;
+    }
+    /* Move title up on activation and then back on deactivation */
+    .panel > *:first-child { transform: translateY(20%); }
+    .panel.open-active > *:first-child { transform: translateY(-5%); }
+
+    .panel.open-active > *:last-child { transform: translateY(0); }
+    /* Hide video before activation and show it when activated */
+    .panel > *:last-child { transform: translateY(100%); }
+    .panel.open-active > *:last-child { transform: translateY(0); }
+
+    .panel p {
+      text-transform: lowercase;
+      text-shadow: 0 0 8px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 0, 0, 0.5);
+      font-size: 3em;
+    }
+
+    .panel.open {
+      flex: 2;
+      font-size: 2em;
+    }
+
+    /* Added to responsively resize embeded youtube video's */
+    .videoWrapper {
+    	position: relative;
+    	padding-bottom: 56.25%; /* 16:9 */
+    	padding-top: 0px;
+    	height: 0;
+    }
+      /* Added to responsively resize embeded youtube video's */
+    .videoWrapper iframe {
+    	position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+    	width: 70%;
+    	height: 70%;
+    }
+
+  </style>
+
+    <div class="panels">
+    
+    <div class="panel panel0">
+      <p>Blade Runner</p>
+      <div class="videoWrapper">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/eogpIG53Cis?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div> 
+    <div class="panel panel1">
+      <p>Fight Club</p>
+      <div class="videoWrapper">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/BdJKm16Co6M?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div> 
+    <div class="panel panel2">
+      <p>Kill Bill</p>
+      <div class="videoWrapper">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/7kSuas6mRpk?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div> 
+    </div>
+
+  <script>
+    const panels = document.querySelectorAll('.panel');
+
+    // Add or remove open class to panels on click
+    function toggleOpen() {
+      this.classList.toggle('open');
+
+      //iterate over all panels and close all other than the clicked one
+      panels.forEach( (panel) => {
+          if (panel !== this){
+            panel.classList.remove('open');
+          }
+      } )
+    }
+    panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+
+    // When panel has finished opening - transition the video
+    function toggleActive(e) {
+      if (e.propertyName.includes('flex')) {
+        this.classList.toggle('open-active');
+      }
+    }
+    panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+
+  </script>
+
+</body>
+</html>
