@@ -153,7 +153,7 @@ def create_panel_backgrounds(movies):
     panel_backgrounds = ''
     for index, movie in enumerate(movies):
         # Add new css class containg the poster background (panel1, panel2, panel3...)
-        panel_backgrounds += poster_background_css.format(movie_no=index, poster_url=movie.poster_image_url)
+        panel_backgrounds += poster_background_css.format(movie_no=index, poster_url=movie.poster_url)
 
     return panel_backgrounds
 
@@ -163,8 +163,8 @@ def create_movie_panels(movies):
     for index, movie in enumerate(movies):
         panels += poster_panel.format(
             movie_no=index,
-            movie_title=movie.title,
-            trailer_youtube_url=movie.trailer_youtube_url
+            movie_title=movie.movie_tile,
+            trailer_youtube_url=movie.trailer_url
         )
 
     return panels
